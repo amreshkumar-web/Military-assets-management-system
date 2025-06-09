@@ -21,7 +21,7 @@ const AuthToken = async (req,resp,next) =>{
     const token =req.cookies?.accessToken;
     
     if(!token){
-        return resp.status(400).send({message:"Authentication required. Please log in."});
+        return resp.status(400).send({message:"Authentication required. Please log in. || token not found"});
     }
     try{
         if( await isTokenBlackListed(token)){

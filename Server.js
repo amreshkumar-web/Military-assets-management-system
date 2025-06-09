@@ -34,15 +34,17 @@ app.use(
 
 const startServer = async () => {
   try {
-    await sequelize.sync();  // 👈 No { alter: true }
-    console.log("✅ User table synced with MariaDB");
-
-    app.listen(PORT, () => {
-      console.log(`🚀 Server is running on port ${PORT}`);
-    });
-
+    console.log("🔍 Attempting MySQL connection with:");
+    console.log("User:", process.env.MYSQLUSER);
+    console.log("Host:", process.env.MYSQLHOST);
+    console.log("Database:", process.env.MYSQL_DATABASE);
+    console.log("Port:", process.env.MYSQLPORT);
+    console.log("Password length:", process.env.MYSQLPASSWORD?.length || 0);
+    
+    await sequelize.sync();
+    // ...
   } catch (error) {
-    console.error("❌ Sync error:", error);
+    console.error("❌ Connection failed:", error.message);
   }
 };
 

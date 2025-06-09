@@ -1,14 +1,15 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
+
 const sequelize = new Sequelize(
   process.env.MYSQL_DATABASE,
-  process.env.MYSQL_USER,
-  process.env.MYSQL_PASSWORD,
+  process.env.MYSQLUSER,        // Changed: MYSQL_USER → MYSQLUSER
+  process.env.MYSQLPASSWORD,    // Changed: MYSQL_PASSWORD → MYSQLPASSWORD
   {
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT || 3306,
+    host: process.env.MYSQLHOST,  // Changed: MYSQL_HOST → MYSQLHOST
+    port: process.env.MYSQLPORT || 3306,  // Changed: MYSQL_PORT → MYSQLPORT
     dialect: 'mysql',
-    logging: console.log // to see connection attempts
+    logging: console.log
   }
 );
 

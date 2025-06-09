@@ -209,14 +209,14 @@ if (updatedRows === 0) {
 
 resp.cookie('accessToken',newAccessToken,{
     httpOnly:true,
-    secure:false,
-    sameSite:"Lax",
+    secure:true,
+    sameSite:"None",
     maxAge:new Date(Date.now() + 10 * 24 * 60 * 60 * 1000) 
 })
 resp.cookie('refreshToken',newRefreshToken,{
     httpOnly:true,
-    secure:false,
-    sameSite:"Lax",
+    secure:true,
+    sameSite:"None",
     maxAge:new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)
 })
 return resp.status(200).json({message:"Session Refreshed"});

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const app = express();
 const loginRoutes = require('./Routes/LoginRoutes');
@@ -9,7 +10,7 @@ const cors = require("cors");
 const { startMonthlyStockRollover } = require("./Scheduler/Scheduler");
 /* require("./dbConnect"); */
 const PORT = process.env.PORT || 5000;
-require('dotenv').config();
+
 
 /* require("./redisConnect") */
 const sequelize = require("./dbConnect");

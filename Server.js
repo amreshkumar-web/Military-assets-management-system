@@ -34,17 +34,15 @@ app.use(
 
 const startServer = async () => {
   try {
-    console.log("🔍 Attempting MySQL connection with:");
-    console.log("User:", process.env.MYSQLUSER);
-    console.log("Host:", process.env.MYSQLHOST);
-    console.log("Database:", process.env.MYSQL_DATABASE);
-    console.log("Port:", process.env.MYSQLPORT);
-    console.log("Password length:", process.env.MYSQLPASSWORD?.length || 0);
-    
+    console.log("🔍 Connecting to MySQL via DATABASE_URL");
     await sequelize.sync();
-    // ...
+    console.log("✅ MySQL Connected Successfully");
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
   } catch (error) {
-    console.error("❌ Connection failed:", error.message);
+    console.error("❌ Error:", error.message);
   }
 };
 

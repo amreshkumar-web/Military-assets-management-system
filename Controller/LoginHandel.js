@@ -61,23 +61,25 @@ if (updatedRows === 0) {
 
 const csrfToken = crypto.randomBytes(32).toString('hex');
 const hashedCsrfToken = await bycrypt.hash(csrfToken,10);
-
 resp.cookie('XSRF-TOKEN',hashedCsrfToken,{
     httpOnly:true,
-    secure:false,
-    sameSite:"Lax"
+    secure:true,
+    sameSite:"None", // Changed from "Lax" to "None" for cross-origin
+    maxAge: 10 * 24 * 60 * 60 * 1000 // Fixed: removed Date object, just milliseconds
 })
+
 resp.cookie('accessToken',accessToken,{
     httpOnly:true,
-    secure:false,
-    sameSite:"Lax",
-    maxAge:new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)
+    secure:true,
+    sameSite:"None", // Changed from "Lax" to "None" for cross-origin
+    maxAge: 10 * 24 * 60 * 60 * 1000 // Fixed: removed Date object, just milliseconds
 })
+
 resp.cookie('refreshToken',refreshToken,{
     httpOnly:true,
-    secure:false,
-    sameSite:"Lax",
-    maxAge:new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)
+    secure:true,
+    sameSite:"None", // Changed from "Lax" to "None" for cross-origin
+    maxAge: 10 * 24 * 60 * 60 * 1000 // Fixed: removed Date object, just milliseconds
 })
 resp.status(200).json({message:"Login Successfully",xCsrfToken:csrfToken});
 

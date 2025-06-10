@@ -172,7 +172,7 @@ if(!checkJwt){
     resp.status(401).json({message:"Token is Expired"});
 }
 const {jUserId,jUserAccess,jUserBaseId} = checkJwt;
-
+console.log(jUserAccess,jUserBaseId,jUserId)
 const findSessionToken = await Session.findOne(
     {
         where:{id:jUserId},

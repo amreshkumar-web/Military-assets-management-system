@@ -124,7 +124,7 @@ const transferStock = async (req, resp) => {
     const { jUserAccess, jUserBaseId, jUserId } = req.user;
     const userBaseId = Number(jUserBaseId);
 
-    console.log("hitted");
+
 
     if (fromBaseId === toBaseId)
         return resp.status(403).json({ message: "Bot Bases are same " });
@@ -400,7 +400,7 @@ const assignAsset = async (req, res) => {
 
 
 const assetSelectOptions = async (req, resp) => {
-    console.log("hitted")
+
   const { jUserAccess, jUserBaseId } = req.user;
 
   try {
@@ -410,7 +410,7 @@ const assetSelectOptions = async (req, resp) => {
     EquipmentType.findAll({ attributes: ['id', 'name', 'category'] }),
     User.findAll({ attributes: ['id', 'name', 'base_id'] }),
   ]);
-  console.log(bases,equipment,users)
+ 
   return resp.status(200).json({ bases, users, equipment });
 } else {
   const [bases, equipment, users] = await Promise.all([

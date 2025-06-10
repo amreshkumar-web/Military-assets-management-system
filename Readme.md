@@ -66,10 +66,7 @@ Create a .env file inside the Backend folder with this structure
 
 
 
-REDIS_SECRET_CODE=redis://default:<your_upstash_redis_url>
-NODEMAILER_SECRET_CODE=<your_app_password>
-JWT_SECRET_KEY=<your_custom_secret_key>
-DATABASE_SECRET_KEY=<your_mariadb_password>
+
 
 
 
